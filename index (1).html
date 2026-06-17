@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="theme-color" content="#6C3FF5"/>
+<title>Летний Прогресс ☀️</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#07080F;--bg2:#0E1018;--bg3:#161820;--card:#131520;--card2:#1A1D2A;
+  --border:#232638;--border2:#2E3248;
+  --text:#F0F2FF;--text2:#8A90B4;--text3:#4A5070;
+  --purple:#6C3FF5;--purple2:#8B5CF6;--purple3:#A78BFA;
+  --blue:#3B82F6;--blue2:#60A5FA;
+  --gold:#F59E0B;--gold2:#FCD34D;
+  --green:#10B981;--green2:#34D399;
+  --red:#EF4444;--red2:#F87171;
+  --r:14px;--r2:10px;--r3:22px;
+  --sh:0 4px 32px rgba(0,0,0,.5);
+  --sh2:0 2px 12px rgba(0,0,0,.3);
+}
+.light{
+  --bg:#F5F6FF;--bg2:#ECEEFF;--bg3:#E2E5FF;
+  --card:#FFFFFF;--card2:#F8F9FF;
+  --border:#D0D4F0;--border2:#B8BEDD;
+  --text:#0A0B14;--text2:#3D4166;--text3:#8A90B4;
+  --sh:0 4px 24px rgba(80,80,160,.08);--sh2:0 2px 8px rgba(80,80,160,.06);
+}
+html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Manrope',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+button{cursor:pointer;border:none;background:none;color:inherit;font-family:inherit;font-size:inherit}
+input,textarea,select{font-family:inherit;color:var(--text);background:transparent;font-size:inherit}
+input::placeholder,textarea::placeholder{color:var(--text3)}
+
+/* App shell */
+.app{display:flex;flex-direction:column;min-height:100%;max-width:480px;margin:0 auto;position:relative}
+.page{flex:1;padding-bottom:88px;animation:fadeUp .22s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* Topbar */
+.topbar{position:sticky;top:0;z-index:100;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;background:var(--bg);border-bottom:1px solid var(--border)}
+.topbar-logo{font-size:18px;font-weight:900;letter-spacing:-.5px;background:linear-gradient(135deg,var(--purple2),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.topbar-right{display:flex;gap:8px}
+.icon-btn{width:34px;height:34px;border-radius:10px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:15px;transition:all .15s}
+.icon-btn:hover{background:var(--border2)}
+
+/* Bottom nav */
+.bottomnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:var(--bg2);border-top:1px solid var(--border);display:flex;padding:6px 4px 18px;z-index:200}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 2px;font-size:9px;font-weight:700;color:var(--text3);transition:color .15s;text-transform:uppercase;letter-spacing:.4px}
+.nav-item.active{color:var(--purple2)}
+.nav-icon{font-size:20px;line-height:1}
+.nav-dot{width:4px;height:4px;border-radius:50%;background:var(--purple);margin-top:2px;opacity:0;transition:opacity .15s}
+.nav-item.active .nav-dot{opacity:1}
+
+/* Section header */
+.sec-head{padding:18px 18px 12px;display:flex;align-items:flex-start;justify-content:space-between}
+.sec-title{font-size:20px;font-weight:900;letter-spacing:-.3px}
+.sec-sub{font-size:13px;color:var(--text2);margin-top:2px}
+
+/* Cards */
+.card{background:var(--card);border-radius:var(--r);padding:18px;border:1px solid var(--border);box-shadow:var(--sh2)}
+.card2{background:var(--card2);border-radius:var(--r2);padding:14px;border:1px solid var(--border)}
+
+/* Buttons */
+.btn-primary{background:linear-gradient(135deg,var(--purple),var(--blue));color:#fff;border-radius:var(--r2);padding:13px 18px;font-size:14px;font-weight:800;display:inline-flex;align-items:center;gap:6px;transition:opacity .15s}
+.btn-primary:hover{opacity:.88}
+.btn-ghost{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:10px 14px;font-size:13px;font-weight:700;color:var(--text2);transition:all .15s}
+.btn-ghost:hover{border-color:var(--border2);color:var(--text)}
+.btn-danger{color:var(--red2);font-size:12px;font-weight:700}
+.add-btn{background:var(--purple);color:#fff;border-radius:10px;padding:7px 14px;font-size:13px;font-weight:800;transition:all .15s}
+.add-btn:hover{background:var(--purple2)}
+
+/* Grid */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gap12{display:flex;flex-direction:column;gap:12px}
+.gap8{display:flex;flex-direction:column;gap:8px}
+
+/* Progress ring */
+.ring-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center}
+.ring-wrap svg{transform:rotate(-90deg)}
+.ring-inner{position:absolute;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring-pct{font-size:26px;font-weight:900;letter-spacing:-.5px}
+.ring-lbl{font-size:10px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.5px}
+
+/* Progress bar */
+.pbar{height:7px;background:var(--bg3);border-radius:4px;overflow:hidden}
+.pbar-fill{height:100%;border-radius:4px;transition:width .6s cubic-bezier(.4,0,.2,1)}
+
+/* Stats card */
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:14px 16px}
+.stat-val{font-size:28px;font-weight:900;line-height:1;letter-spacing:-.5px}
+.stat-lbl{font-size:11px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.5px;margin-top:4px}
+
+/* Tags */
+.tag{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:800}
+.tag-purple{background:rgba(108,63,245,.15);color:var(--purple3)}
+.tag-blue{background:rgba(59,130,246,.15);color:var(--blue2)}
+.tag-gold{background:rgba(245,158,11,.15);color:var(--gold)}
+.tag-green{background:rgba(16,185,129,.15);color:var(--green2)}
+.tag-red{background:rgba(239,68,68,.15);color:var(--red2)}
+
+/* Chips */
+.chip{padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700;border:1.5px solid var(--border);color:var(--text2);transition:all .15s;background:transparent}
+.chip.active,.chip:hover{background:var(--purple);color:#fff;border-color:var(--purple)}
+
+/* Form */
+.field{display:flex;flex-direction:column;gap:5px}
+.label{font-size:12px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.4px}
+.input{width:100%;padding:11px 14px;background:var(--bg3);border:1.5px solid var(--border);border-radius:var(--r2);font-size:14px;outline:none;transition:border-color .15s;color:var(--text)}
+.input:focus{border-color:var(--purple)}
+textarea.input{resize:none;line-height:1.5}
+select.input{appearance:none;cursor:pointer}
+
+/* Modal */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:500;display:flex;align-items:flex-end;justify-content:center;backdrop-filter:blur(4px);animation:fadeIn .2s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal{background:var(--bg2);border-radius:24px 24px 0 0;padding:22px 18px 32px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;animation:slideUp .28s cubic-bezier(.4,0,.2,1)}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.modal-handle{width:32px;height:3px;background:var(--border2);border-radius:2px;margin:0 auto 20px}
+.modal-title{font-size:18px;font-weight:900;margin-bottom:18px;letter-spacing:-.3px}
+.modal-actions{display:flex;gap:10px;margin-top:20px}
+.modal-actions .btn-primary{flex:1;justify-content:center}
+.modal-actions .btn-ghost{flex:1;justify-content:center}
+
+/* Checkbox */
+.checkbox{width:22px;height:22px;border-radius:7px;border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;transition:all .15s}
+.checkbox.checked{background:var(--green);border-color:var(--green)}
+
+/* Toast */
+.toast{position:fixed;top:18px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;padding:11px 18px;border-radius:var(--r2);font-size:13px;font-weight:800;z-index:1000;white-space:nowrap;box-shadow:var(--sh);animation:toastIn .25s ease,toastOut .25s ease 2.3s forwards;pointer-events:none}
+@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(-8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+@keyframes toastOut{to{opacity:0;transform:translateX(-50%) translateY(-8px)}}
+
+/* Empty state */
+.empty{display:flex;flex-direction:column;align-items:center;gap:10px;padding:40px 24px;text-align:center}
+.empty-icon{font-size:44px}
+.empty-title{font-size:15px;font-weight:800;color:var(--text)}
+.empty-sub{font-size:13px;color:var(--text2);line-height:1.5}
+
+/* Points badge */
+.pts{display:inline-flex;align-items:center;gap:4px;background:rgba(245,158,11,.15);color:var(--gold);border-radius:20px;padding:3px 9px;font-size:12px;font-weight:800}
+
+/* Quote */
+.quote-card{background:linear-gradient(135deg,rgba(108,63,245,.12),rgba(59,130,246,.08));border:1px solid rgba(108,63,245,.2);border-radius:var(--r);padding:18px}
+
+/* Journal entry */
+.j-day{border-left:3px solid var(--purple);padding-left:14px}
+.j-date{font-size:11px;font-weight:800;color:var(--purple3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.j-q{font-size:11px;color:var(--text3);margin-bottom:2px;font-weight:700}
+.j-a{font-size:13px;color:var(--text);font-weight:500;line-height:1.5}
+
+/* Priority dots */
+.pri-high{color:var(--red2)}
+.pri-mid{color:var(--gold)}
+.pri-low{color:var(--green2)}
+
+/* Chart bars */
+.bar-chart{display:flex;align-items:flex-end;gap:6px;height:120px;padding-top:10px}
+.bar-col{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1}
+.bar-track{flex:1;width:100%;background:var(--bg3);border-radius:4px;position:relative;overflow:hidden;min-height:4px}
+.bar-fill{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,var(--purple),var(--blue));border-radius:4px;transition:height .6s cubic-bezier(.4,0,.2,1)}
+.bar-lbl{font-size:10px;color:var(--text3);font-weight:600}
+
+/* Suggestion item */
+.sug{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text2)}
+.sug:last-child{border-bottom:none}
+.sug-dot{width:6px;height:6px;border-radius:50%;background:var(--purple);flex-shrink:0}
+
+/* Streak */
+.streak{display:flex;align-items:center;gap:6px}
+.streak-num{font-size:28px;font-weight:900;letter-spacing:-.5px}
+.streak-icon{font-size:24px}
+
+/* Responsive */
+@media(min-width:600px){.app{box-shadow:var(--sh)}.bottomnav{border-radius:0 0 var(--r) var(--r)}}
+@supports(padding:env(safe-area-inset-bottom)){
+  .bottomnav{padding-bottom:calc(18px + env(safe-area-inset-bottom))}
+  .page{padding-bottom:calc(88px + env(safe-area-inset-bottom))}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<script>
+// ── Storage helpers ──────────────────────────────────────────────────────────
+const DB = {
+  get(k, def) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : def; } catch { return def; } },
+  set(k, v)   {
+    try { localStorage.setItem(k, JSON.stringify(v)); }
+    catch (e) { console.error('Storage write failed for', k, e); alert('Ошибка сохранения! Сделай экспорт данных немедленно (значок ⬇️ сверху).'); }
+  }
+};
+
+function exportBackup() {
+  const data = {
+    tasks: DB.get('tasks', []), goals: DB.get('goals', []),
+    improv: DB.get('improv', []), journal: DB.get('journal', []),
+    points: DB.get('points', []), theme: DB.get('theme', 'dark')
+  };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'progress-backup-' + today() + '.json';
+  a.click();
+}
+
+function importBackup(file) {
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const data = JSON.parse(e.target.result);
+      ['tasks','goals','improv','journal','points','theme'].forEach(k => {
+        if (data[k] !== undefined) DB.set(k, data[k]);
+      });
+      location.reload();
+    } catch { alert('Файл повреждён или не подходит.'); }
+  };
+  reader.readAsText(file);
+}
+
+// ── Utils ────────────────────────────────────────────────────────────────────
+const uid   = () => Math.random().toString(36).slice(2, 10);
+const today = () => new Date().toISOString().slice(0, 10);
+const pct   = (a, b) => b ? Math.min(100, Math.round(a / b * 100)) : 0;
+
+const fmtDate = d => new Date(d + 'T00:00:00').toLocaleDateString('ru-RU', { day: 'numeric', month: 'short' });
+const fmtFull = d => new Date(d + 'T00:00:00').toLocaleDateString('ru-RU', { weekday: 'long', day: 'numeric', month: 'long' });
+
+function greeting() {
+  const h = new Date().getHours();
+  if (h < 6)  return 'Доброй ночи 🌙';
+  if (h < 12) return 'Доброе утро 🌅';
+  if (h < 17) return 'Добрый день ☀️';
+  if (h < 21) return 'Добрый вечер 🌆';
+  return 'Доброй ночи 🌙';
+}
+
+// ── State ────────────────────────────────────────────────────────────────────
+let state = {
+  page:   DB.get('page', 'dashboard'),
+  theme:  DB.get('theme', 'dark'),
+  tasks:  DB.get('tasks', []),
+  goals:  DB.get('goals', []),
+  improv: DB.get('improv', []),
+  journal:DB.get('journal', []),
+  points: DB.get('points', []),
+  toast:  null,
+  toastTimer: null,
+  modal:  null,   // { type, data }
+};
+
+function save(key) { DB.set(key, state[key]); }
+
+function setState(patch) {
+  Object.assign(state, patch);
+  render();
+}
+
+function showToast(msg) {
+  if (state.toastTimer) clearTimeout(state.toastTimer);
+  const timer = setTimeout(() => setState({ toast: null, toastTimer: null }), 2700);
+  setState({ toast: msg, toastTimer: timer });
+}
+
+function addPoints(pts, reason) {
+  state.points = [{ id: uid(), pts, reason, date: today() }, ...state.points].slice(0, 500);
+  save('points');
+}
+
+function navigate(page) {
+  state.page = page;
+  DB.set('page', page);
+  render();
+}
+
+function openModal(type, data = {}) { setState({ modal: { type, data } }); }
+function closeModal() { setState({ modal: null }); }
+
+// ── Data ─────────────────────────────────────────────────────────────────────
+const QUOTES = [
+  { text: 'Дисциплина — это выбор между тем, чего хочешь сейчас, и тем, чего хочешь больше всего.', author: 'А. Линкольн' },
+  { text: 'Успех — это сумма маленьких усилий, повторяемых изо дня в день.', author: 'Р. Кольер' },
+  { text: 'Не жди идеального момента. Действуй сейчас.', author: '' },
+  { text: 'Ты не должен быть великим, чтобы начать. Но нужно начать, чтобы стать великим.', author: 'Л. Браун' },
+  { text: 'Один шаг вперёд лучше, чем тысяча планов.', author: '' },
+  { text: 'Тяжело в учении — легко в бою.', author: 'Суворов' },
+  { text: 'Чемпионы продолжают делать это даже тогда, когда не хочется.', author: 'Б.Дж. Кинг' },
+  { text: 'Сила воли — это мышца. Тренируй её каждый день.', author: '' },
+  { text: 'Каждое утро — это новый шанс. Воспользуйся им.', author: '' },
+  { text: 'Делай что должен, и будь что будет.', author: 'Народная мудрость' },
+];
+
+const SUGGESTIONS = {
+  'бег':             ['Бегать 3 раза в неделю', 'Разминка 10 мин перед бегом', 'Растяжка после пробежки', 'Спать 8 часов', 'Пить 2 л воды в день'],
+  'дисциплина':      ['Вставать в одно время', 'Планировать день с вечера', 'Не брать телефон первый час', 'Медитация 10 мин', 'Выполнять 3 главные задачи в день'],
+  'сон':             ['Ложиться до 23:00', 'Не смотреть экран за час до сна', 'Спать 7–9 часов', 'Проветривать комнату', 'Вставать без будильника'],
+  'сила':            ['Тренировки 3–4 раза в неделю', 'Белок 2 г на кг веса', 'Прогрессивная перегрузка', 'Отдых 48 ч между группами', 'Фиксировать веса и повторы'],
+  'программирование':['Кодить минимум 1 час в день', 'Строить реальные проекты', 'Читать документацию', 'Решать алгоритмические задачи', 'Изучать новый инструмент каждый месяц'],
+  'учёба':           ['Метод Помодоро (25+5 мин)', 'Интервальные повторения', 'Конспекты от руки', 'Объяснять тему другому', 'Учиться без телефона'],
+};
+
+const GOAL_ICONS = {
+  'бег': '🏃', 'дисциплина': '⚡', 'сон': '😴', 'сила': '💪',
+  'программирование': '💻', 'учёба': '📚', 'питание': '🥗',
+  'медитация': '🧘', 'чтение': '📖', 'плавание': '🏊',
+};
+
+const POINT_RULES = {
+  'Тренировка': 50, 'Бег': 50, 'Чтение': 20,
+  'Программирование': 40, 'Учёба': 30, 'Медитация': 15,
+  'Сон 8ч': 25, 'Растяжка': 20,
+};
+
+// ── HTML helpers ─────────────────────────────────────────────────────────────
+const h = (tag, attrs = {}, ...children) => {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === 'class') el.className = v;
+    else if (k.startsWith('on') && typeof v === 'function') el.addEventListener(k.slice(2).toLowerCase(), v);
+    else if (k === 'style' && typeof v === 'object') Object.assign(el.style, v);
+    else if (v !== null && v !== undefined && v !== false) el.setAttribute(k, v);
+  }
+  for (const c of children.flat(Infinity)) {
+    if (c == null || c === false) continue;
+    el.appendChild(typeof c === 'string' || typeof c === 'number' ? document.createTextNode(c) : c);
+  }
+  return el;
+};
+
+const div  = (cls, ...ch) => h('div', { class: cls }, ...ch);
+const span = (cls, txt)   => h('span', { class: cls }, txt);
+const btn  = (cls, txt, onClick) => h('button', { class: cls, onClick }, txt);
+
+function progressRing(size, stroke, p, color = 'var(--purple)') {
+  const r = (size - stroke * 2) / 2;
+  const circ = 2 * Math.PI * r;
+  const off = circ - (p / 100) * circ;
+  const ns = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(ns, 'svg');
+  svg.setAttribute('width', size);
+  svg.setAttribute('height', size);
+  svg.style.transform = 'rotate(-90deg)';
+  const bg = document.createElementNS(ns, 'circle');
+  bg.setAttribute('cx', size / 2); bg.setAttribute('cy', size / 2); bg.setAttribute('r', r);
+  bg.setAttribute('fill', 'none'); bg.setAttribute('stroke', 'var(--bg3)'); bg.setAttribute('stroke-width', stroke);
+  const fg = document.createElementNS(ns, 'circle');
+  fg.setAttribute('cx', size / 2); fg.setAttribute('cy', size / 2); fg.setAttribute('r', r);
+  fg.setAttribute('fill', 'none'); fg.setAttribute('stroke', color); fg.setAttribute('stroke-width', stroke);
+  fg.setAttribute('stroke-dasharray', circ); fg.setAttribute('stroke-dashoffset', off);
+  fg.setAttribute('stroke-linecap', 'round');
+  fg.style.transition = 'stroke-dashoffset .7s cubic-bezier(.4,0,.2,1)';
+  svg.appendChild(bg); svg.appendChild(fg);
+  return svg;
+}
+
+function pbar(val, max, color = 'linear-gradient(90deg,var(--purple),var(--blue))') {
+  const p = pct(val, max);
+  return h('div', { class: 'pbar' },
+    h('div', { class: 'pbar-fill', style: { width: p + '%', background: color } })
+  );
+}
+
+function checkbox(done, onToggle) {
+  const el = h('div', { class: 'checkbox' + (done ? ' checked' : ''), onClick: onToggle });
+  if (done) el.innerHTML = `<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  return el;
+}
+
+// ── Computed helpers ─────────────────────────────────────────────────────────
+function calcStreak() {
+  let streak = 0;
+  const d = new Date();
+  for (let i = 0; i < 60; i++) {
+    const ds = d.toISOString().slice(0, 10);
+    const dayTasks = state.tasks.filter(t => t.date === ds);
+    if (dayTasks.length > 0 && dayTasks.some(t => t.done)) { streak++; d.setDate(d.getDate() - 1); }
+    else if (i === 0) { d.setDate(d.getDate() - 1); }
+    else break;
+  }
+  return streak;
+}
+
+function weekPts() {
+  const cutoff = new Date(); cutoff.setDate(cutoff.getDate() - 7);
+  return state.points.filter(p => new Date(p.date) >= cutoff).reduce((a, p) => a + p.pts, 0);
+}
+
+function totalPts() { return state.points.reduce((a, p) => a + p.pts, 0); }
+
+// ── Pages ────────────────────────────────────────────────────────────────────
+
+// DASHBOARD
+function renderDashboard() {
+  const todayTasks = state.tasks.filter(t => t.date === today());
+  const doneTasks  = todayTasks.filter(t => t.done);
+  const dayPct     = pct(doneTasks.length, todayTasks.length || 1);
+  const streak     = calcStreak();
+  const pts        = totalPts();
+  const mainGoal   = state.goals[0];
+  const quote      = QUOTES[new Date().getDay() % QUOTES.length];
+
+  return div('page',
+    // Header
+    h('div', { class: 'sec-head' },
+      h('div', {},
+        h('div', { class: 'sec-title' }, greeting()),
+        h('div', { class: 'sec-sub' }, fmtFull(today()))
+      ),
+      span('tag tag-purple', '☀️ Лето')
+    ),
+
+    h('div', { style: { padding: '0 18px', display: 'flex', flexDirection: 'column', gap: '14px' } },
+
+      // Hero ring card
+      h('div', { class: 'card', style: { textAlign: 'center', padding: '24px 18px' } },
+        h('div', { style: { display: 'flex', justifyContent: 'center', marginBottom: '16px' } },
+          (() => {
+            const wrap = h('div', { class: 'ring-wrap' });
+            const svg = progressRing(150, 13, dayPct, 'url(#dashGrad)');
+            // gradient defs
+            const ns = 'http://www.w3.org/2000/svg';
+            const defs = document.createElementNS(ns, 'defs');
+            const grad = document.createElementNS(ns, 'linearGradient');
+            grad.setAttribute('id', 'dashGrad'); grad.setAttribute('x1', '0%'); grad.setAttribute('y1', '0%');
+            grad.setAttribute('x2', '100%'); grad.setAttribute('y2', '0%');
+            const s1 = document.createElementNS(ns, 'stop'); s1.setAttribute('offset', '0%'); s1.setAttribute('stop-color', '#6C3FF5');
+            const s2 = document.createElementNS(ns, 'stop'); s2.setAttribute('offset', '100%'); s2.setAttribute('stop-color', '#3B82F6');
+            grad.appendChild(s1); grad.appendChild(s2); defs.appendChild(grad); svg.prepend(defs);
+            const inner = h('div', { class: 'ring-inner' },
+              h('div', { class: 'ring-pct' }, dayPct + '%'),
+              h('div', { class: 'ring-lbl' }, 'Сегодня')
+            );
+            wrap.appendChild(svg); wrap.appendChild(inner);
+            return wrap;
+          })()
+        ),
+        h('div', { class: 'g2' },
+          h('div', { class: 'stat-card' },
+            h('div', { class: 'streak' }, span('streak-icon', '🔥'), span('streak-num', streak)),
+            h('div', { class: 'stat-lbl' }, 'Дней подряд')
+          ),
+          h('div', { class: 'stat-card' },
+            h('div', { class: 'stat-val', style: { color: 'var(--gold)' } }, doneTasks.length + ' / ' + todayTasks.length),
+            h('div', { class: 'stat-lbl' }, 'Задач сегодня')
+          )
+        ),
+        h('div', { style: { marginTop: '14px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' } },
+          span('pts', '⭐ ' + pts + ' очков'),
+          h('span', { style: { fontSize: '12px', color: 'var(--text2)' } }, 'Неделя: ' + weekPts())
+        )
+      ),
+
+      // Quote
+      h('div', { class: 'quote-card' },
+        h('div', { style: { fontSize: '18px', marginBottom: '8px' } }, '💬'),
+        h('div', { style: { fontSize: '14px', fontWeight: '600', lineHeight: '1.6', color: 'var(--text)' } }, '"' + quote.text + '"'),
+        quote.author ? h('div', { style: { fontSize: '12px', color: 'var(--text2)', marginTop: '6px', fontWeight: '700' } }, '— ' + quote.author) : null
+      ),
+
+      // Main goal preview
+      mainGoal ? h('div', { class: 'card' },
+        h('div', { style: { display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' } },
+          h('span', { style: { fontSize: '22px' } }, GOAL_ICONS[mainGoal.category?.toLowerCase()] || '🏆'),
+          h('div', {},
+            h('div', { style: { fontSize: '14px', fontWeight: '800' } }, mainGoal.title),
+            h('div', { style: { fontSize: '12px', color: 'var(--text2)' } }, mainGoal.category || 'Цель')
+          ),
+          h('div', { style: { marginLeft: 'auto', fontSize: '18px', fontWeight: '900', color: 'var(--purple3)' } }, pct(mainGoal.current, mainGoal.target) + '%')
+        ),
+        pbar(mainGoal.current, mainGoal.target),
+        h('div', { style: { display: 'flex', justifyContent: 'space-between', marginTop: '6px', fontSize: '12px', color: 'var(--text2)' } },
+          h('span', {}, mainGoal.current + ' / ' + mainGoal.target),
+          pct(mainGoal.current, mainGoal.target) >= 100 ? span('tag tag-green', '✅ Выполнено') : null
+        )
+      ) : null,
+
+      // Today tasks
+      todayTasks.length > 0 ? h('div', { class: 'card' },
+        h('div', { style: { fontSize: '11px', fontWeight: '800', color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: '10px' } }, 'Задачи на сегодня'),
+        ...todayTasks.slice(0, 5).map(t =>
+          h('div', { style: { display: 'flex', alignItems: 'center', gap: '10px', padding: '7px 0', borderBottom: '1px solid var(--border)' } },
+            checkbox(t.done, () => {
+              t.done = !t.done;
+              if (t.done) { addPoints(10, 'Задача'); showToast('+10 очков ⭐'); }
+              save('tasks');
+              render();
+            }),
+            h('span', { style: { fontSize: '13px', flex: '1', textDecoration: t.done ? 'line-through' : 'none', color: t.done ? 'var(--text3)' : 'var(--text)' } }, t.title),
+            h('span', { class: t.priority === 'Высокий' ? 'pri-high' : t.priority === 'Средний' ? 'pri-mid' : 'pri-low', style: { fontSize: '11px' } },
+              t.priority === 'Высокий' ? '●●●' : t.priority === 'Средний' ? '●●○' : '●○○'
+            )
+          )
+        ),
+        todayTasks.length > 5 ? h('div', { style: { fontSize: '12px', color: 'var(--text3)', textAlign: 'center', paddingTop: '8px' } }, '+ ещё ' + (todayTasks.length - 5)) : null
+      ) : null
+    )
+  );
+}
+
+// TASKS
+function renderTasks() {
+  const todayTasks = state.tasks.filter(t => t.date === today());
+  const donePct    = pct(todayTasks.filter(t => t.done).length, todayTasks.length || 1);
+
+  let filter = state.tasksFilter || 'all';
+  const filtered = filter === 'done' ? todayTasks.filter(t => t.done)
+                 : filter === 'todo' ? todayTasks.filter(t => !t.done)
+                 : todayTasks;
+  const sorted = [...filtered].sort((a, b) => {
+    const o = { 'Высокий': 0, 'Средний': 1, 'Низкий': 2 };
+    return (o[a.priority] || 1) - (o[b.priority] || 1);
+  });
+
+  function setFilter(f) { state.tasksFilter = f; render(); }
+
+  return div('page',
+    h('div', { class: 'sec-head' },
+      h('div', {},
+        h('div', { class: 'sec-title' }, 'Задачи 📋'),
+        h('div', { class: 'sec-sub' }, fmtDate(today()))
+      ),
+      btn('add-btn', '+ Задача', () => openModal('addTask'))
+    ),
+
+    h('div', { style: { padding: '0 18px', display: 'flex', flexDirection: 'column', gap: '12px' } },
+
+      // Progress summary
+      h('div', { class: 'card', style: { display: 'flex', alignItems: 'center', gap: '16px' } },
+        (() => {
+          const wrap = h('div', { class: 'ring-wrap' });
+          wrap.appendChild(progressRing(68, 7, donePct, 'var(--green)'));
+          const inner = h('div', { class: 'ring-inner' },
+            h('div', { style: { fontSize: '13px', fontWeight: '900', color: 'var(--green)' } }, donePct + '%')
+          );
+          wrap.appendChild(inner);
+          return wrap;
+        })(),
+        h('div', { style: { flex: '1' } },
+          h('div', { style: { fontSize: '20px', fontWeight: '900', letterSpacing: '-.3px' } },
+            todayTasks.filter(t => t.done).length + ' / ' + todayTasks.length
+          ),
+          h('div', { style: { fontSize: '12px', color: 'var(--text2)', marginBottom: '6px' } }, 'выполнено сегодня'),
+          pbar(donePct, 100, 'var(--green)')
+        )
+      ),
+
+      // Filter chips
+      h('div', { style: { display: 'flex', gap: '8px' } },
+        ...['all', 'todo', 'done'].map(f =>
+          btn('chip' + (filter === f ? ' active' : ''),
+            f === 'all' ? 'Все' : f === 'todo' ? 'Активные' : 'Готово',
+            () => setFilter(f)
+          )
+        )
+      ),
+
+      // Task list
+      sorted.length === 0
+        ? div('empty',
+            h('div', { class: 'empty-icon' }, filter === 'done' ? '📭' : '✅'),
+            h('div', { class: 'empty-title' }, filter === 'done' ? 'Нет выполненных' : 'Все задачи готовы!'),
+            h('div', { class: 'empty-sub' }, filter === 'all' ? 'Добавь задачи на сегодня' : '')
+          )
+        : h('div', { class: 'gap8' },
+            ...sorted.map(t =>
+              h('div', { class: 'card2', style: { display: 'flex', alignItems: 'center', gap: '12px', opacity: t.done ? '.65' : '1', transition: 'opacity .2s' } },
+                checkbox(t.done, () => {
+                  t.done = !t.done;
+                  if (t.done) { addPoints(10, 'Задача'); showToast('+10 очков ⭐'); }
+                  save('tasks'); render();
+                }),
+                h('div', { style: { flex: '1', minWidth: '0' } },
+                  h('div', { style: { fontSize: '14px', fontWeight: '600', textDecoration: t.done ? 'line-through' : 'none', color: t.done ? 'var(--text3)' : 'var(--text)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' } }, t.title),
+                  h('div', { style: { marginTop: '4px' } },
+                    span('tag ' + (t.priority === 'Высокий' ? 'tag-red' : t.priority === 'Средний' ? 'tag-gold' : 'tag-green'),
+                      t.priority === 'Высокий' ? '🔴 Высокий' : t.priority === 'Средний' ? '🟡 Средний' : '🟢 Низкий'
+                    )
+                  )
+                ),
+                btn('btn-danger', '×', () => {
+                  state.tasks = state.tasks.filter(x => x.id !== t.id);
+                  save('tasks'); render();
+                })
+              )
+            )
+          )
+    )
+  );
+}
+
+// GOALS
+function renderGoals() {
+  const cats = ['Бег', 'Чтение', 'Программирование', 'Здоровье', 'Учёба', 'Спорт', 'Другое'];
+
+  return div('page',
+    h('div', { class: 'sec-head' },
+      h('div', {},
+        h('div', { class: 'sec-title' }, 'Цели лета 🏆'),
+        h('div', { class: 'sec-sub' }, 'Долгосрочные цели')
+      ),
+      btn('add-btn', '+ Цель', () => openModal('addGoal'))
+    ),
+
+    h('div', { style: { padding: '0 18px', display: 'flex', flexDirection: 'column', gap: '12px' } },
+      state.goals.length === 0
+        ? div('empty',
+            h('div', { class: 'empty-icon' }, '🏆'),
+            h('div', { class: 'empty-title' }, 'Нет целей'),
+            h('div', { class: 'empty-sub' }, 'Добавь первую цель на лето!\nПробеги 100 км, прочитай 10 книг...')
+          )
+        : state.goals.map(g => {
+            const p = pct(g.current, g.target);
+            const icon = GOAL_ICONS[g.category?.toLowerCase()] || '🏆';
+            const daysLeft = g.deadline ? Math.ceil((new Date(g.deadline) - new Date()) / 864e5) : null;
+            let updInput = null;
+
+            return h('div', { class: 'card' },
+              h('div', { style: { display: 'flex', alignItems: 'flex-start', gap: '12px', marginBottom: '12px' } },
+                h('span', { style: { fontSize: '26px' } }, icon),
+                h('div', { style: { flex: '1', minWidth: '0' } },
+                  h('div', { style: { display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px' } },
+                    h('div', { style: { fontSize: '15px', fontWeight: '900', flex: '1', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' } }, g.title),
+                    h('div', { style: { fontSize: '18px', fontWeight: '900', color: p >= 100 ? 'var(--green)' : 'var(--purple3)', flexShrink: '0' } }, p + '%')
+                  ),
+                  g.category ? span('tag tag-purple', g.category) : null,
+                  daysLeft !== null ? h('div', { style: { fontSize: '12px', color: daysLeft < 7 ? 'var(--red)' : 'var(--text2)', marginTop: '4px', fontWeight: '600' } },
+                    daysLeft > 0 ? '⏰ ' + daysLeft + ' дн. осталось' : daysLeft === 0 ? '📅 Сегодня дедлайн' : '⚠️ Просрочено'
+                  ) : null
+                )
+              ),
+
+              pbar(g.current, g.target),
+              h('div', { style: { display: 'flex', justifyContent: 'space-between', marginTop: '5px', fontSize: '12px', color: 'var(--text2)' } },
+                h('span', {}, g.current + ' / ' + g.target),
+                p >= 100 ? span('tag tag-green', '✅ Выполнено') : null
+              ),
+
+              g.notes ? h('div', { style: { marginTop: '8px', fontSize: '12px', color: 'var(--text2)', fontStyle: 'italic' } }, '"' + g.notes + '"') : null,
+
+              h('div', { style: { display: 'flex', gap: '8px', marginTop: '12px' } },
+                btn('chip', '+ Прогресс', () => {
+                  const val = prompt('Новый прогресс (текущий: ' + g.current + '):', g.current);
+                  if (val !== null) {
+                    g.current = Math.min(Number(val) || 0, g.target);
+                    addPoints(10, 'Прогресс цели');
+                    save('goals');
+                    showToast('+10 очков ⭐');
+                    render();
+                  }
+                }),
+                btn('chip', '✏️ Изменить', () => openModal('editGoal', g)),
+                btn('btn-danger', 'Удалить', () => {
+                  if (confirm('Удалить цель?')) {
+                    state.goals = state.goals.filter(x => x.id !== g.id);
+                    save('goals'); render();
+                  }
+                })
+              )
+            );
+          })
+    )
+  );
+}
+
+// IMPROVE
+function renderImprove() {
+  const presets = ['Бег', 'Дисциплина', 'Сон', 'Сила', 'Программирование', 'Учёба'];
+
+  return div('page',
+    h('div', { class: 'sec-head' },
+      h('div', {},
+        h('div', { class: 'sec-title' }, 'Улучшения 💪'),
+        h('div', { class: 'sec-sub' }, 'Что хочу прокачать')
+      ),
+      btn('add-btn', '+ Цель', () => openModal('addImprov'))
+    ),
+
+    h('div', { style: { padding: '0 18px', display: 'flex', flexDirection: 'column', gap: '12px' } },
+      state.improv.length === 0
+        ? div('empty',
+            h('div', { class: 'empty-icon' }, '💪'),
+            h('div', { class: 'empty-title' }, 'Добавь первую цель'),
+            h('div', { class: 'empty-sub' }, 'Выбери что хочешь улучшить этим летом')
+          )
+        : state.improv.map(g => {
+            const p = pct(g.current || 0, g.target || 100);
+            const icon = GOAL_ICONS[g.name?.toLowerCase()] || '🎯';
+            const sugs = SUGGESTIONS[g.name?.toLowerCase()] || [];
+            let showSugs = false;
+
+            const card = h('div', { class: 'card' },
+              h('div', { style: { display: 'flex', gap: '12px', marginBottom: '12px' } },
+                h('span', { style: { fontSize: '26px' } }, icon),
+                h('div', { style: { flex: '1' } },
+                  h('div', { style: { display: 'flex', alignItems: 'center', justifyContent: 'space-between' } },
+                    h('div', { style: { fontSize: '15px', fontWeight: '900' } }, g.name),
+                    h('div', { style: { fontSize: '18px', fontWeight: '900', color: p >= 100 ? 'var(--green)' : 'var(--purple3)' } }, p + '%')
+                  ),
+                  g.desc ? h('div', { style: { fontSize: '12px', color: 'var(--text2)', marginTop: '2px' } }, g.desc) : null,
+                  h('div', { style: { marginTop: '10px' } },
+                    pbar(g.current || 0, g.target || 100),
+                    h('div', { style: { display: 'flex', justifyContent: 'space-between', marginTop: '4px', fontSize: '11px', color: 'var(--text2)' } },
+                      h('span', {}, (g.current || 0) + ' / ' + g.target),
+                      p >= 100 ? h('span', {}, '✅') : null
+                    )
+                  )
+                )
+              ),
+
+              h('div', { style: { display: 'flex', gap: '8px' } },
+                (() => {
+                  const sugsDiv = h('div', { style: { display: 'none', marginTop: '12px', paddingTop: '12px', borderTop: '1px solid var(--border)' } },
+                    h('div', { style: { fontSize: '11px', color: 'var(--text3)', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: '6px' } }, 'Советы'),
+                    ...sugs.map(s => h('div', { class: 'sug' }, h('div', { class: 'sug-dot' }), h('span', {}, s)))
+                  );
+
+                  const sugsBtn = btn('chip', 'Советы', () => {
+                    const vis = sugsDiv.style.display !== 'none';
+                    sugsDiv.style.display = vis ? 'none' : 'block';
+                    sugsBtn.className = 'chip' + (vis ? '' : ' active');
+                  });
+
+                  card.appendChild(sugsDiv);
+                  return sugsBtn;
+                })(),
+                btn('chip', '+ Прогресс', () => {
+                  const val = prompt('Новое значение:', g.current || 0);
+                  if (val !== null) {
+                    g.current = Math.min(Number(val) || 0, g.target);
+                    addPoints(30, 'Прогресс улучшения');
+                    save('improv');
+                    showToast('+30 очков ⭐');
+                    render();
+                  }
+                }),
+                btn('btn-danger', 'Удалить', () => {
+                  state.improv = state.improv.filter(x => x.id !== g.id);
+                  save('improv'); render();
+                })
+              )
+            );
+
+            return card;
+          })
+    )
+  );
+}
+
+// JOURNAL
+function renderJournal() {
+  const todayEntry = state.journal.find(j => j.date === today());
+  const past = state.journal.filter(j => j.date !== today()).slice(0, 30);
+
+  return div('page',
+    h('div', { class: 'sec-head' },
+      h('div', {},
+        h('div', { class: 'sec-title' }, 'Дневник 📓'),
+        h('div', { class: 'sec-sub' }, 'Ежедневная рефлексия')
+      ),
+      btn('add-btn', todayEntry ? '✏️ Изменить' : '+ Запись', () => openModal('addJournal', todayEntry || {}))
+    ),
+
+    h('div', { style: { padding: '0 18px', display: 'flex', flexDirection: 'column', gap: '14px' } },
+
+      // Today's entry
+      todayEntry
+        ? h('div', { class: 'card', style: { borderLeft: '3px solid var(--green)' } },
+            h('div', { style: { display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' } },
+              h('span', { style: { fontSize: '16px' } }, '✅'),
+              h('div', { style: { fontSize: '14px', fontWeight: '800' } }, 'Запись за сегодня'),
+              span('tag tag-green', 'Готово')
+            ),
+            h('div', { class: 'gap8' },
+              todayEntry.q1 ? h('div', {}, h('div', { class: 'j-q' }, 'Что сделал хорошо:'), h('div', { class: 'j-a' }, todayEntry.q1)) : null,
+              todayEntry.q2 ? h('div', {}, h('div', { class: 'j-q' }, 'Что улучшить:'), h('div', { class: 'j-a' }, todayEntry.q2)) : null,
+              todayEntry.q3 ? h('div', {}, h('div', { class: 'j-q' }, 'Горжусь:'), h('div', { class: 'j-a' }, todayEntry.q3)) : null
+            )
+          )
+        : h('div', { class: 'card', style: { background: 'linear-gradient(135deg,rgba(108,63,245,.08),rgba(59,130,246,.06))', textAlign: 'center', padding: '28px 18px' } },
+            h('div', { style: { fontSize: '36px', marginBottom: '10px' } }, '📝'),
+            h('div', { style: { fontSize: '15px', fontWeight: '800', marginBottom: '6px' } }, 'Как прошёл день?'),
+            h('div', { style: { fontSize: '13px', color: 'var(--text2)', marginBottom: '16px' } }, 'Запиши свои мысли'),
+            btn('btn-primary', '✍️ Написать', () => openModal('addJournal', {}))
+          ),
+
+      // History
+      past.length > 0 ? h('div', {},
+        h('div', { style: { fontSize: '13px', fontWeight: '800', color: 'var(--text2)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: '10px' } }, 'История'),
+        h('div', { class: 'gap8' },
+          ...past.map(j =>
+            h('div', { class: 'card2' },
+              h('div', { class: 'j-day' },
+                h('div', { class: 'j-date' }, fmtDate(j.date)),
+                j.q1 ? h('div', {}, h('div', { class: 'j-q' }, 'Хорошо:'), h('div', { class: 'j-a' }, j.q1)) : null,
+                j.q3 ? h('div', { style: { marginTop: '6px' } }, h('div', { class: 'j-q' }, 'Горжусь:'), h('div', { class: 'j-a' }, j.q3)) : null
+              )
+            )
+          )
+        )
+      ) : null
+    )
+  );
+}
+
+// STATS
+function renderStats() {
+  const last7 = Array.from({ length: 7 }, (_, i) => {
+    const d = new Date(); d.setDate(d.getDate() - 6 + i);
+    const ds = d.toISOString().slice(0, 10);
+    const dt = state.tasks.filter(t => t.date === ds);
+    const done = dt.filter(t => t.done).length;
+    return { day: d.toLocaleDateString('ru-RU', { weekday: 'short' }), done, total: dt.length, pts: state.points.filter(p => p.date === ds).reduce((a, p) => a + p.pts, 0) };
+  });
+
+  const maxDone = Math.max(...last7.map(d => d.done), 1);
+  const maxPts  = Math.max(...last7.map(d => d.pts), 1);
+  const totalTasks = state.tasks.filter(t => t.done).length;
+  const streak  = calcStreak();
+  const pts     = totalPts();
+  let statsTab  = state.statsTab || 'tasks';
+
+  function setTab(t) { state.statsTab = t; render(); }
+
+  return div('page',
+    h('div', { class: 'sec-head' },
+      h('div', {},
+        h('div', { class: 'sec-title' }, 'Статистика 📊'),
+        h('div', { class: 'sec-sub' }, 'Твой прогресс')
+      )
+    ),
+
+    h('div', { style: { padding: '0 18px', display: 'flex', flexDirection: 'column', gap: '14px' } },
+
+      // Top stats
+      h('div', { class: 'g2' },
+        h('div', { class: 'stat-card' }, h('div', { class: 'stat-val', style: { color: 'var(--purple3)' } }, pts), h('div', { class: 'stat-lbl' }, 'Всего очков')),
+        h('div', { class: 'stat-card' }, h('div', { class: 'stat-val', style: { color: 'var(--green)' } }, totalTasks), h('div', { class: 'stat-lbl' }, 'Задач выполнено')),
+        h('div', { class: 'stat-card' }, h('div', { class: 'stat-val', style: { color: 'var(--gold)' } }, streak), h('div', { class: 'stat-lbl' }, 'Дней подряд')),
+        h('div', { class: 'stat-card' }, h('div', { class: 'stat-val', style: { color: 'var(--blue2)' } }, state.goals.length), h('div', { class: 'stat-lbl' }, 'Целей'))
+      ),
+
+      // Tab switcher
+      h('div', { style: { display: 'flex', gap: '8px' } },
+        btn('chip' + (statsTab === 'tasks' ? ' active' : ''), 'Задачи', () => setTab('tasks')),
+        btn('chip' + (statsTab === 'points' ? ' active' : ''), 'Очки', () => setTab('points'))
+      ),
+
+      // Bar chart
+      h('div', { class: 'card' },
+        h('div', { style: { fontSize: '13px', fontWeight: '800', marginBottom: '14px', color: 'var(--text2)', textTransform: 'uppercase', letterSpacing: '.3px' } },
+          statsTab === 'tasks' ? 'Задачи за 7 дней' : 'Очки за 7 дней'
+        ),
+        h('div', { class: 'bar-chart' },
+          ...last7.map(d => {
+            const val = statsTab === 'tasks' ? d.done : d.pts;
+            const max = statsTab === 'tasks' ? maxDone : maxPts;
+            const heightPct = max > 0 ? Math.max(4, Math.round(val / max * 100)) : 4;
+            return h('div', { class: 'bar-col' },
+              h('div', { class: 'bar-track' },
+                h('div', { class: 'bar-fill', style: { height: heightPct + '%' } })
+              ),
+              h('div', { class: 'bar-lbl' }, d.day)
+            );
+          })
+        )
+      ),
+
+      // Goals progress
+      state.goals.length > 0 ? h('div', { class: 'card' },
+        h('div', { style: { fontSize: '13px', fontWeight: '800', marginBottom: '14px', color: 'var(--text2)', textTransform: 'uppercase', letterSpacing: '.3px' } }, 'Прогресс целей'),
+        h('div', { class: 'gap8' },
+          ...state.goals.slice(0, 5).map(g =>
+            h('div', {},
+              h('div', { style: { display: 'flex', justifyContent: 'space-between', marginBottom: '5px', fontSize: '13px', fontWeight: '700' } },
+                h('span', {}, g.title),
+                h('span', { style: { color: 'var(--purple3)' } }, pct(g.current, g.target) + '%')
+              ),
+              pbar(g.current, g.target)
+            )
+          )
+        )
+      ) : null,
+
+      // Points log
+      h('div', { class: 'card' },
+        h('div', { style: { fontSize: '13px', fontWeight: '800', marginBottom: '12px', color: 'var(--text2)', textTransform: 'uppercase', letterSpacing: '.3px' } }, 'История очков'),
+        state.points.length === 0
+          ? h('div', { class: 'empty', style: { padding: '16px' } }, h('div', { class: 'empty-sub' }, 'Пока нет активности'))
+          : h('div', { class: 'gap8' },
+              ...state.points.slice(0, 12).map(p =>
+                h('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '7px 0', borderBottom: '1px solid var(--border)' } },
+                  h('div', {},
+                    h('div', { style: { fontSize: '13px', fontWeight: '600' } }, p.reason),
+                    h('div', { style: { fontSize: '11px', color: 'var(--text3)' } }, fmtDate(p.date))
+                  ),
+                  span('pts', '+' + p.pts + ' ⭐')
+                )
+              )
+            )
+      )
+    )
+  );
+}
+
+// POINTS
+function renderPoints() {
+  const pts = totalPts();
+  const todayPts = state.points.filter(p => p.date === today()).reduce((a, p) => a + p.pts, 0);
+  const wPts = weekPts();
+
+  const badges = [
+    { icon: '🌱', title: 'Первые шаги', desc: 'Набери 100 очков', earned: pts >= 100 },
+    { icon: '🔥', title: 'На огне', desc: 'Набери 500 очков', earned: pts >= 500 },
+    { icon: '💎', title: 'Бриллиант', desc: 'Набери 1000 очков', earned: pts >= 1000 },
+    { icon: '👑', title: 'Чемпион', desc: 'Набери 2000 очков', earned: pts >= 2000 },
+  ];
+
+  return div('page',
+    h('div', { class: 'sec-head' },
+      h('div', {},
+        h('div', { class: 'sec-title' }, 'Очки ⭐'),
+        h('div', { class: 'sec-sub' }, 'Система наград')
+      )
+    ),
+
+    h('div', { style: { padding: '0 18px', display: 'flex', flexDirection: 'column', gap: '14px' } },
+
+      // Total
+      h('div', { class: 'card', style: { background: 'linear-gradient(135deg,rgba(245,158,11,.12),rgba(252,211,77,.06))', border: '1px solid rgba(245,158,11,.2)', textAlign: 'center', padding: '28px 18px' } },
+        h('div', { style: { fontSize: '40px', marginBottom: '4px' } }, '⭐'),
+        h('div', { style: { fontSize: '52px', fontWeight: '900', color: 'var(--gold)', letterSpacing: '-2px', lineHeight: '1' } }, pts),
+        h('div', { style: { fontSize: '13px', color: 'var(--text2)', fontWeight: '700', marginTop: '4px' } }, 'Всего очков'),
+        h('div', { style: { display: 'flex', gap: '24px', justifyContent: 'center', marginTop: '18px' } },
+          h('div', { style: { textAlign: 'center' } },
+            h('div', { style: { fontSize: '22px', fontWeight: '900', color: 'var(--gold2)' } }, todayPts),
+            h('div', { style: { fontSize: '11px', color: 'var(--text2)' } }, 'Сегодня')
+          ),
+          h('div', { style: { width: '1px', background: 'var(--border)' } }),
+          h('div', { style: { textAlign: 'center' } },
+            h('div', { style: { fontSize: '22px', fontWeight: '900', color: 'var(--gold2)' } }, wPts),
+            h('div', { style: { fontSize: '11px', color: 'var(--text2)' } }, 'Неделя')
+          )
+        )
+      ),
+
+      // Log activity
+      h('div', { class: 'card' },
+        h('div', { style: { fontSize: '14px', fontWeight: '800', marginBottom: '12px' } }, 'Записать активность'),
+        h('div', { class: 'g2' },
+          ...Object.entries(POINT_RULES).map(([act, p]) =>
+            h('button', {
+              style: { background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: 'var(--r2)', padding: '12px', textAlign: 'left', cursor: 'pointer', transition: 'all .15s' },
+              onClick: () => { addPoints(p, act); showToast('+' + p + ' очков за ' + act + '! ⭐'); },
+              onMouseenter: e => e.currentTarget.style.borderColor = 'var(--purple)',
+              onMouseleave: e => e.currentTarget.style.borderColor = 'var(--border)'
+            },
+              h('div', { style: { fontSize: '20px', marginBottom: '4px' } }, GOAL_ICONS[act.toLowerCase()] || '⚡'),
+              h('div', { style: { fontSize: '12px', fontWeight: '800' } }, act),
+              span('pts', '+' + p + ' ⭐')
+            )
+          )
+        )
+      ),
+
+      // Badges
+      h('div', { style: { fontSize: '14px', fontWeight: '800', marginBottom: '4px' } }, 'Достижения'),
+      h('div', { class: 'g2' },
+        ...badges.map(b =>
+          h('div', { class: 'card2', style: { opacity: b.earned ? '1' : '.4', textAlign: 'center', padding: '18px 12px', transition: 'opacity .3s' } },
+            h('div', { style: { fontSize: '32px', marginBottom: '6px' } }, b.icon),
+            h('div', { style: { fontSize: '13px', fontWeight: '900', marginBottom: '2px' } }, b.title),
+            h('div', { style: { fontSize: '11px', color: 'var(--text2)', marginBottom: b.earned ? '8px' : '0' } }, b.desc),
+            b.earned ? span('tag tag-green', '✅ Получено') : null
+          )
+        )
+      )
+    )
+  );
+}
+
+// ── Modals ───────────────────────────────────────────────────────────────────
+function renderModal() {
+  if (!state.modal) return null;
+  const { type, data } = state.modal;
+
+  const overlay = h('div', { class: 'overlay', onClick: e => { if (e.target === overlay) closeModal(); } });
+  const modal   = h('div', { class: 'modal', onClick: e => e.stopPropagation() });
+  const handle  = h('div', { class: 'modal-handle' });
+  modal.appendChild(handle);
+  overlay.appendChild(modal);
+
+  if (type === 'addTask') {
+    let title = '', prio = 'Средний';
+    const PRIOS = ['Высокий', 'Средний', 'Низкий'];
+    const titleInput = h('input', { class: 'input', placeholder: 'Что нужно сделать?', autofocus: true });
+    titleInput.addEventListener('keydown', e => { if (e.key === 'Enter') add(); });
+
+    let prioChips;
+    function setPrio(p) {
+      prio = p;
+      prioChips.querySelectorAll('.chip').forEach(c => c.className = 'chip' + (c.dataset.val === p ? ' active' : ''));
+    }
+    prioChips = h('div', { style: { display: 'flex', gap: '8px' } },
+      ...PRIOS.map(p => {
+        const c = btn('chip' + (p === prio ? ' active' : ''), p, () => setPrio(p));
+        c.dataset.val = p;
+        return c;
+      })
+    );
+
+    function add() {
+      const t = titleInput.value.trim();
+      if (!t) return;
+      state.tasks.push({ id: uid(), title: t, priority: prio, done: false, date: today() });
+      save('tasks');
+      closeModal();
+      showToast('Задача добавлена ✅');
+    }
+
+    modal.appendChild(h('div', { class: 'modal-title' }, 'Новая задача'));
+    modal.appendChild(h('div', { class: 'gap12' },
+      h('div', { class: 'field' }, h('label', { class: 'label' }, 'Название'), titleInput),
+      h('div', { class: 'field' }, h('label', { class: 'label' }, 'Приоритет'), prioChips),
+      h('div', { class: 'modal-actions' },
+        btn('btn-ghost', 'Отмена', closeModal),
+        btn('btn-primary', 'Добавить', add)
+      )
+    ));
+    setTimeout(() => titleInput.focus(), 50);
+  }
+
+  else if (type === 'addGoal' || type === 'editGoal') {
+    const editing = type === 'editGoal';
+    const CATS = ['Бег', 'Чтение', 'Программирование', 'Здоровье', 'Учёба', 'Спорт', 'Другое'];
+    let cat = data.category || '';
+
+    const titleInp   = h('input', { class: 'input', placeholder: 'Пробежать 100 км...', value: data.title || '' });
+    const targetInp  = h('input', { class: 'input', type: 'number', placeholder: '100', value: data.target || '' });
+    const currentInp = h('input', { class: 'input', type: 'number', placeholder: '0', value: data.current || '' });
+    const deadlineInp= h('input', { class: 'input', type: 'date', value: data.deadline || '' });
+    const notesInp   = h('textarea', { class: 'input', rows: '2', placeholder: 'Заметки...' }, data.notes || '');
+
+    let catChips;
+    function setCat(c) {
+      cat = c;
+      catChips.querySelectorAll('.chip').forEach(x => x.className = 'chip' + (x.dataset.val === c ? ' active' : ''));
+    }
+    catChips = h('div', { style: { display: 'flex', flexWrap: 'wrap', gap: '6px' } },
+      ...CATS.map(c => { const x = btn('chip' + (c === cat ? ' active' : ''), c, () => setCat(c)); x.dataset.val = c; return x; })
+    );
+
+    function save_() {
+      const title = titleInp.value.trim();
+      if (!title) return;
+      const goal = {
+        id: editing ? data.id : uid(),
+        title,
+        category: cat,
+        target: Number(targetInp.value) || 100,
+        current: Number(currentInp.value) || 0,
+        deadline: deadlineInp.value,
+        notes: notesInp.value.trim(),
+        date: data.date || today()
+      };
+      if (editing) {
+        state.goals = state.goals.map(g => g.id === goal.id ? goal : g);
+      } else {
+        state.goals.push(goal);
+        addPoints(20, 'Новая цель');
+      }
+      save('goals');
+      closeModal();
+      showToast(editing ? 'Цель обновлена 🎯' : 'Цель добавлена! 🎯 +20 ⭐');
+    }
+
+    modal.appendChild(h('div', { class: 'modal-title' }, editing ? 'Изменить цель' : 'Новая цель 🏆'));
+    modal.appendChild(h('div', { class: 'gap12' },
+      h('div', { class: 'field' }, h('label', { class: 'label' }, 'Название'), titleInp),
+      h('div', { class: 'field' }, h('label', { class: 'label' }, 'Категория'), catChips),
+      h('div', { class: 'g2' },
+        h('div', { class: 'field' }, h('label', { class: 'label' }, 'Цель'), targetInp),
+        h('div', { class: 'field' }, h('label', { class: 'label' }, 'Текущее'), currentInp)
+      ),
+      h('div', { class: 'field' }, h('label', { class: 'label' }, 'Дедлайн'), deadlineInp),
+      h('div', { class: 'field' }, h('label', { class: 'label' }, 'Заметки'), notesInp),
+      h('div', { class: 'modal-actions' },
+        btn('btn-ghost', 'Отмена', closeModal),
+        btn('btn-primary', 'Сохранить', save_)
+      )
+    ));
+  }
+
+  else if (type === 'addImprov') {
+    const PRESETS = ['Бег', 'Дисциплина', 'Сон', 'Сила', 'Программирование', 'Учёба'];
+    let name = '';
+    const nameInp   = h('input', { class: 'input', placeholder: 'Своё название...', value: '' });
+    const descInp   = h('input', { class: 'input', placeholder: 'Зачем это мне?', value: '' });
+    const targetInp = h('input', { class: 'input', type: 'number', placeholder: '100', value: '' });
+
+    nameInp.addEventListener('input', () => { name = nameInp.value; });
+
+    let chips;
+    function setName(n) {
+      name = n; nameInp.value = n;
+      chips.querySelectorAll('.chip').forEach(c => c.className = 'chip' + (c.dataset.val === n ? ' active' : ''));
+    }
+    chips = h('div', { style: { display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '8px' } },
+      ...PRESETS.map(p => { const c = btn('chip', p, () => setName(p)); c.dataset.val = p; return c; })
+    );
+
+    function save_() {
+      const n = nameInp.value.trim();
+      if (!n) return;
+      state.improv.push({
+        id: uid(), name: n,
+        desc: descInp.value.trim(),
+        target: Number(targetInp.value) || 100,
+        current: 0,
+        date: today()
+      });
+      save('improv');
+      closeModal();
+      showToast('Цель добавлена 💪');
+    }
+
+    modal.appendChild(h('div', { class: 'modal-title' }, 'Что хочу улучшить'));
+    modal.appendChild(h('div', { class: 'gap12' },
+      h('div', { class: 'field' },
+        h('label', { class: 'label' }, 'Выбери или введи'),
+        chips,
+        nameInp
+      ),
+      h('div', { class: 'field' }, h('label', { class: 'label' }, 'Описание'), descInp),
+      h('div', { class: 'field' }, h('label', { class: 'label' }, 'Целевое значение'), targetInp),
+      h('div', { class: 'modal-actions' },
+        btn('btn-ghost', 'Отмена', closeModal),
+        btn('btn-primary', 'Добавить', save_)
+      )
+    ));
+  }
+
+  else if (type === 'addJournal') {
+    const q1Inp = h('textarea', { class: 'input', rows: '3', placeholder: 'Опиши свои успехи...' }, data.q1 || '');
+    const q2Inp = h('textarea', { class: 'input', rows: '2', placeholder: 'Над чем поработать...' }, data.q2 || '');
+    const q3Inp = h('textarea', { class: 'input', rows: '2', placeholder: 'Что меня радует...' }, data.q3 || '');
+
+    function save_() {
+      if (!q1Inp.value.trim() && !q2Inp.value.trim() && !q3Inp.value.trim()) return;
+      const entry = { id: uid(), date: today(), q1: q1Inp.value.trim(), q2: q2Inp.value.trim(), q3: q3Inp.value.trim() };
+      state.journal = [entry, ...state.journal.filter(j => j.date !== today())].slice(0, 200);
+      save('journal');
+      if (!data.q1) { addPoints(15, 'Дневник'); }
+      closeModal();
+      showToast('Запись сохранена 📝' + (data.q1 ? '' : ' +15 ⭐'));
+    }
+
+    modal.appendChild(h('div', { class: 'modal-title' }, 'Запись в дневник 📝'));
+    modal.appendChild(h('div', { class: 'gap12' },
+      h('div', { class: 'field' }, h('label', { class: 'label' }, 'Что сделал хорошо?'), q1Inp),
+      h('div', { class: 'field' }, h('label', { class: 'label' }, 'Что можно улучшить?'), q2Inp),
+      h('div', { class: 'field' }, h('label', { class: 'label' }, 'Чем горжусь сегодня?'), q3Inp),
+      h('div', { class: 'modal-actions' },
+        btn('btn-ghost', 'Отмена', closeModal),
+        btn('btn-primary', 'Сохранить', save_)
+      )
+    ));
+  }
+
+  return overlay;
+}
+
+// ── Nav ──────────────────────────────────────────────────────────────────────
+const NAV = [
+  { id: 'dashboard', icon: '🏠', label: 'Главная' },
+  { id: 'tasks',     icon: '📋', label: 'Задачи'  },
+  { id: 'goals',     icon: '🏆', label: 'Цели'    },
+  { id: 'improv',    icon: '💪', label: 'Прогресс' },
+  { id: 'journal',   icon: '📓', label: 'Дневник'  },
+  { id: 'stats',     icon: '📊', label: 'Статы'   },
+];
+
+// ── Render ───────────────────────────────────────────────────────────────────
+function render() {
+  const root = document.getElementById('app');
+  root.innerHTML = '';
+
+  // Apply theme
+  document.documentElement.className = state.theme === 'light' ? 'light' : '';
+
+  const app = div('app');
+
+  // Topbar
+  const topbar = div('topbar',
+    h('div', { class: 'topbar-logo' }, 'Летний Прогресс ☀️'),
+    div('topbar-right',
+      btn('icon-btn', '⬇️', exportBackup),
+      h('label', { class: 'icon-btn', style: { cursor: 'pointer' } }, '⬆️',
+        h('input', { type: 'file', accept: '.json', style: { display: 'none' }, onChange: e => { if (e.target.files[0]) importBackup(e.target.files[0]); } })
+      ),
+      btn('icon-btn', '⭐', () => navigate('points')),
+      btn('icon-btn', state.theme === 'dark' ? '☀️' : '🌙', () => {
+        state.theme = state.theme === 'dark' ? 'light' : 'dark';
+        DB.set('theme', state.theme);
+        render();
+      })
+    )
+  );
+  app.appendChild(topbar);
+
+  // Page content
+  const pages = {
+    dashboard: renderDashboard,
+    tasks:     renderTasks,
+    goals:     renderGoals,
+    improv:    renderImprove,
+    journal:   renderJournal,
+    stats:     renderStats,
+    points:    renderPoints,
+  };
+  const pageEl = (pages[state.page] || pages.dashboard)();
+  app.appendChild(pageEl);
+
+  // Bottom nav (exclude 'points' from nav)
+  const bottomnav = h('nav', { class: 'bottomnav' });
+  NAV.forEach(n => {
+    const item = h('button', { class: 'nav-item' + (state.page === n.id ? ' active' : ''), onClick: () => navigate(n.id) },
+      h('div', { class: 'nav-icon' }, n.icon),
+      h('span', {}, n.label),
+      h('div', { class: 'nav-dot' })
+    );
+    bottomnav.appendChild(item);
+  });
+  app.appendChild(bottomnav);
+
+  // Modal
+  const modalEl = renderModal();
+  if (modalEl) app.appendChild(modalEl);
+
+  // Toast
+  if (state.toast) {
+    app.appendChild(h('div', { class: 'toast' }, state.toast));
+  }
+
+  root.appendChild(app);
+}
+
+// Boot
+render();
+</script>
+</body>
+</html>
