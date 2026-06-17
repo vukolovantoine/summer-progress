@@ -191,8 +191,38 @@ select.input{appearance:none;cursor:pointer}
 // ── Storage helpers ──────────────────────────────────────────────────────────
 const DB = {
   get(k, def) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : def; } catch { return def; } },
-  set(k, v)   { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
+  set(k, v)   {
+    try { localStorage.setItem(k, JSON.stringify(v)); }
+    catch (e) { console.error('Storage write failed for', k, e); alert('Ошибка сохранения! Сделай экспорт данных немедленно (значок ⬇️ сверху).'); }
+  }
 };
+
+function exportBackup() {
+  const data = {
+    tasks: DB.get('tasks', []), goals: DB.get('goals', []),
+    improv: DB.get('improv', []), journal: DB.get('journal', []),
+    points: DB.get('points', []), theme: DB.get('theme', 'dark')
+  };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'progress-backup-' + today() + '.json';
+  a.click();
+}
+
+function importBackup(file) {
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const data = JSON.parse(e.target.result);
+      ['tasks','goals','improv','journal','points','theme'].forEach(k => {
+        if (data[k] !== undefined) DB.set(k, data[k]);
+      });
+      location.reload();
+    } catch { alert('Файл повреждён или не подходит.'); }
+  };
+  reader.readAsText(file);
+}
 
 // ── Utils ────────────────────────────────────────────────────────────────────
 const uid   = () => Math.random().toString(36).slice(2, 10);
@@ -1123,7 +1153,7 @@ function renderModal() {
     function save_() {
       if (!q1Inp.value.trim() && !q2Inp.value.trim() && !q3Inp.value.trim()) return;
       const entry = { id: uid(), date: today(), q1: q1Inp.value.trim(), q2: q2Inp.value.trim(), q3: q3Inp.value.trim() };
-      state.journal = [entry, ...state.journal.filter(j => j.date !== today())];
+      state.journal = [entry, ...state.journal.filter(j => j.date !== today())].slice(0, 200);
       save('journal');
       if (!data.q1) { addPoints(15, 'Дневник'); }
       closeModal();
@@ -1169,6 +1199,10 @@ function render() {
   const topbar = div('topbar',
     h('div', { class: 'topbar-logo' }, 'Летний Прогресс ☀️'),
     div('topbar-right',
+      btn('icon-btn', '⬇️', exportBackup),
+      h('label', { class: 'icon-btn', style: { cursor: 'pointer' } }, '⬆️',
+        h('input', { type: 'file', accept: '.json', style: { display: 'none' }, onChange: e => { if (e.target.files[0]) importBackup(e.target.files[0]); } })
+      ),
       btn('icon-btn', '⭐', () => navigate('points')),
       btn('icon-btn', state.theme === 'dark' ? '☀️' : '🌙', () => {
         state.theme = state.theme === 'dark' ? 'light' : 'dark';
